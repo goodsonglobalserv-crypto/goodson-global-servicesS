@@ -1,0 +1,19 @@
+export default function Home() {
+  return (
+    <div style={{ fontFamily: "Arial", padding: "40px", textAlign: "center" }}>
+      <h1>Goodson Global Services</h1>
+      <p>Reliable Moving Services Across Metro Atlanta</p>
+
+      <hr style={{ margin: "30px 0" }} />
+
+      <h2>Our Services</h2>
+      <p>Local • Long Distance • Residential • Commercial • Loading Help</p>
+
+      <hr style={{ margin: "30px 0" }} />
+
+      <h2>Contact</h2>
+      <p>📞 470-830-2573</p>
+      <p>📧 GoodsonGlobalServ@gmail.com</p>
+    </div>
+  );
+}
