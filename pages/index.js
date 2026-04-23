@@ -1,23 +1,36 @@
 export default function Home() {
-  return (
-    <div style={{ fontFamily: "Arial", margin: 0, background: "#0b1220", color: "white" }}>
 
-      {/* FLOATING CALL BUTTON */}
-      <a
-        href="tel:4708302573"
-        style={{
-          position: "fixed",
-          bottom: "18px",
-          right: "18px",
-          background: "#2563eb",
-          color: "white",
-          padding: "14px 16px",
-          borderRadius: "50px",
-          textDecoration: "none",
-          fontWeight: "bold",
-          zIndex: 999
-        }}
-      >
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const name = e.target.name.value;
+    const phone = e.target.phone.value;
+    const date = e.target.date.value;
+    const details = e.target.details.value;
+
+    const message =
+      `Name: ${name}%0D%0APhone: ${phone}%0D%0ADate: ${date}%0D%0ADetails: ${details}`;
+
+    window.location.href =
+      `mailto:GoodsonGlobalServ@gmail.com?subject=New Moving Lead (Atlanta)&body=${message}`;
+  };
+
+  return (
+    <div style={{ fontFamily: "Arial", background: "#0b1220", color: "white" }}>
+
+      {/* CALL BUTTON */}
+      <a href="tel:4708302573" style={{
+        position: "fixed",
+        bottom: "18px",
+        right: "18px",
+        background: "#2563eb",
+        padding: "14px 16px",
+        borderRadius: "50px",
+        color: "white",
+        textDecoration: "none",
+        fontWeight: "bold",
+        zIndex: 999
+      }}>
         📞 Call Now
       </a>
 
@@ -27,15 +40,12 @@ export default function Home() {
         textAlign: "center",
         background: "linear-gradient(135deg, #0f172a, #111827)"
       }}>
-        <h1 style={{ fontSize: "48px" }}>
-          Goodson Global Services
-        </h1>
-
-        <p style={{ color: "#cbd5e1", fontSize: "18px" }}>
-          Professional Moving Company in Metro Atlanta
+        <h1>Goodson Global Services</h1>
+        <p style={{ color: "#cbd5e1" }}>
+          Atlanta Moving Company — Fast • Reliable • Affordable
         </p>
 
-        <a href="#quote" style={{
+        <a href="#leadform" style={{
           display: "inline-block",
           marginTop: "20px",
           background: "#2563eb",
@@ -50,14 +60,13 @@ export default function Home() {
       </section>
 
       {/* SERVICES */}
-      <section style={{ padding: "70px 20px", maxWidth: "1000px", margin: "auto" }}>
-        <h2 style={{ textAlign: "center" }}>Our Services</h2>
+      <section style={{ padding: "60px 20px", maxWidth: "1000px", margin: "auto" }}>
+        <h2 style={{ textAlign: "center" }}>Services</h2>
 
         <div style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-          gap: "15px",
-          marginTop: "20px"
+          gap: "15px"
         }}>
           {[
             "Local Moving",
@@ -74,57 +83,63 @@ export default function Home() {
             }}>
               <h3>{item}</h3>
               <p style={{ color: "#9ca3af", fontSize: "13px" }}>
-                Safe, fast, and affordable service.
+                Professional movers you can trust.
               </p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* WHY CHOOSE US */}
-      <section style={{
-        background: "#0f172a",
-        padding: "70px 20px",
-        textAlign: "center"
-      }}>
-        <h2>Why Customers Choose Us</h2>
-        <p style={{ maxWidth: "700px", margin: "auto", color: "#cbd5e1" }}>
-          We provide reliable moving services across Metro Atlanta with a focus on speed, care, and affordability.
-          Our goal is to make your move stress-free from start to finish.
-        </p>
-      </section>
-
       {/* REVIEWS */}
       <section style={{ padding: "70px 20px", textAlign: "center" }}>
         <h2>Customer Reviews</h2>
-
-        <div style={{ maxWidth: "700px", margin: "auto", marginTop: "20px", color: "#cbd5e1" }}>
-          <p>⭐ “Very professional and fast service.”</p>
-          <p>⭐ “Affordable and handled my furniture with care.”</p>
-          <p>⭐ “Best movers I’ve used in Atlanta.”</p>
-        </div>
+        <p style={{ color: "#cbd5e1" }}>
+          ⭐ Fast, reliable, and professional service<br/>
+          ⭐ Affordable and careful movers<br/>
+          ⭐ Best moving company in Atlanta
+        </p>
       </section>
 
-      {/* QUOTE */}
-      <section id="quote" style={{ padding: "70px 20px", textAlign: "center" }}>
-        <h2>Request a Free Quote</h2>
+      {/* LEAD FORM */}
+      <section id="leadform" style={{ padding: "70px 20px", textAlign: "center" }}>
+        <h2>Get Your Free Quote</h2>
 
-        <div style={{
-          background: "#111827",
-          maxWidth: "400px",
+        <form onSubmit={handleSubmit} style={{
+          maxWidth: "420px",
           margin: "auto",
+          background: "#111827",
           padding: "20px",
           borderRadius: "12px"
         }}>
-          <p>📞 470-830-2573</p>
-          <p>📧 GoodsonGlobalServ@gmail.com</p>
-          <p style={{ color: "#9ca3af", fontSize: "13px" }}>
-            Call or text for fastest response
-          </p>
-        </div>
+
+          <input name="name" placeholder="Name" required
+            style={{ width: "100%", padding: "10px", marginBottom: "10px" }} />
+
+          <input name="phone" placeholder="Phone" required
+            style={{ width: "100%", padding: "10px", marginBottom: "10px" }} />
+
+          <input name="date" placeholder="Move Date" required
+            style={{ width: "100%", padding: "10px", marginBottom: "10px" }} />
+
+          <textarea name="details" placeholder="Move details" required
+            style={{ width: "100%", padding: "10px", height: "100px", marginBottom: "10px" }} />
+
+          <button type="submit" style={{
+            width: "100%",
+            padding: "12px",
+            background: "#2563eb",
+            color: "white",
+            border: "none",
+            borderRadius: "8px",
+            fontWeight: "bold"
+          }}>
+            Submit Quote
+          </button>
+
+        </form>
       </section>
 
-      {/* SEO TEXT */}
+      {/* SEO */}
       <div style={{
         maxWidth: "800px",
         margin: "auto",
@@ -132,8 +147,8 @@ export default function Home() {
         fontSize: "12px",
         color: "#94a3b8"
       }}>
-        Atlanta moving company offering residential, commercial, and long-distance moving services across Metro Atlanta.
-        Reliable movers focused on safety, affordability, and customer satisfaction.
+        Atlanta moving company offering residential, commercial, and long-distance moving services.
+        Serving Metro Atlanta with professional and affordable movers.
       </div>
 
       {/* FOOTER */}
